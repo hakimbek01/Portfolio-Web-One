@@ -148,23 +148,27 @@ class _DesktopHomeState extends State<DesktopHome> {
             ),
           ),
           //skills
-          SizedBox(
-            width: double.infinity,
-            child: Column(
-              children: [
-                SizedBox(height: 100,),
-                Text("Skills",style: TextStyle(fontFamily: "Font1",fontWeight: FontWeight.bold,fontSize: 32),),
-                SizedBox(height: 50,),
-                Text(Texts.skills,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
-                SizedBox(height: 50,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FlutterLogo(size: 30,),
-
-                  ],
-                )
-              ],
+          Padding(
+            padding: padding,
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                children: [
+                  SizedBox(height: 100,),
+                  Text("Skills",style: TextStyle(fontFamily: "Font1",fontWeight: FontWeight.bold,fontSize: 32),),
+                  SizedBox(height: 50,),
+                  Text(Texts.skills,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                  SizedBox(height: 50,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FlutterLogo(size: 80,),
+                      Image.asset("assets/images/dart.png",width: 80,height: 80,),
+                      Image.asset("assets/images/firebase.png",width: 80,height: 80,)
+                    ],
+                  )
+                ],
+              ),
             ),
           )
 
