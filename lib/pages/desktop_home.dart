@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolioweb/constant.dart';
 
@@ -162,18 +163,54 @@ class _DesktopHomeState extends State<DesktopHome> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      FlutterLogo(size: 80,),
-                      Image.asset("assets/images/dart.png",width: 80,height: 80,),
-                      Image.asset("assets/images/firebase.png",width: 80,height: 80,)
+                      itemOfSkills(image: "assets/images/firebase.png",name: "Firebase",stars: 4),
+                      itemOfSkills(image: "assets/images/dart.png",name: "Dart",stars: 3),
+                      itemOfSkills(image: "assets/images/androidstudio.png",name: "Androidstudio",stars: 4),
                     ],
                   )
                 ],
               ),
             ),
           )
-
         ],
       ),
+    );
+  }
+
+  Widget itemOfSkills({image,name,stars}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.asset(image,width: 80,height: 80,),
+        SizedBox(height: 10,),
+        Text(name,style: TextStyle(color: Colors.grey),),
+        SizedBox(height: 20,),
+        SizedBox(
+          height: 40,
+          width: 160,
+          child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.zero,
+            scrollDirection: Axis.horizontal,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return  index>=stars?
+              Row(
+                children: [
+                  Icon(CupertinoIcons.star_fill,color: Colors.grey,),
+                  SizedBox(width: 10,),
+                ],
+              ):
+              Row(
+                children: [
+                  Icon(CupertinoIcons.star_fill,color: Colors.black,),
+                  SizedBox(width: 10,),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 
