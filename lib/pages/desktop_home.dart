@@ -152,6 +152,7 @@ class _DesktopHomeState extends State<DesktopHome> {
           Padding(
             padding: padding,
             child: SizedBox(
+              height: 700,
               width: double.infinity,
               child: Column(
                 children: [
@@ -170,6 +171,63 @@ class _DesktopHomeState extends State<DesktopHome> {
                   )
                 ],
               ),
+            ),
+          ),
+          //portfolio
+          Container(
+            color: Colors.grey.shade50,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 100,),
+                Text("Portfolio",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                //p1
+                SizedBox(height: 50,),
+                Padding(
+                  padding: padding,
+                  child: SizedBox(
+                    height: 500,
+                    width: double.infinity,
+                    child: Image.asset("assets/images/p1.png",fit: BoxFit.cover,),
+                  ),
+                ),
+                SizedBox(height: 40,),
+                TextButton(
+                  onPressed: (){},
+                  child: Text("Speedometr - Homepage",textAlign: TextAlign.center,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: "Font1",color: Colors.black),),
+                ),
+                //p2
+                SizedBox(height: 50,),
+                Padding(
+                  padding: padding,
+                  child: SizedBox(
+                    height: 500,
+                    width: double.infinity,
+                    child: Image.asset("assets/images/p2.png",fit: BoxFit.cover,),
+                  ),
+                ),
+                SizedBox(height: 40,),
+                TextButton(
+                  onPressed: (){},
+                  child: Text("QR-Scan - Homepage",textAlign: TextAlign.center,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: "Font1",color: Colors.black),),
+                ),
+                //p3
+                SizedBox(height: 50,),
+                Padding(
+                  padding: padding,
+                  child: SizedBox(
+                    height: 500,
+                    width: double.infinity,
+                    child: Image.asset("assets/images/p3.png",fit: BoxFit.cover,),
+                  ),
+                ),
+                SizedBox(height: 40,),
+                TextButton(
+                  onPressed: (){},
+                  child: Text("ZaraShop Online Market - Homepage",textAlign: TextAlign.center,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: "Font1",color: Colors.black),),
+                ),
+              ],
             ),
           )
         ],
