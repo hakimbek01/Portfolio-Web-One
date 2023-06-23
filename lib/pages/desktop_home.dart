@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolioweb/constant.dart';
+import 'package:rive/rive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DesktopHome extends StatefulWidget {
   const DesktopHome({Key? key}) : super(key: key);
@@ -12,13 +14,21 @@ class DesktopHome extends StatefulWidget {
 class _DesktopHomeState extends State<DesktopHome> {
 
   bool language = true;
+  ScrollController scrollController = ScrollController();
+  bool isMouse1 = false;
+  bool isMouse2 = false;
+  bool isMouse3 = false;
 
   @override
   Widget build(BuildContext context) {
-    final padding = EdgeInsets.symmetric(horizontal: 200);
+    final size = MediaQuery.of(context).size.width;
+    final padding = EdgeInsets.symmetric(horizontal: size<860?60:size<960?70:size<1060?80:size<1160?90:size<1260?100:size<1360?180:200);
+    final margin = EdgeInsets.symmetric(horizontal: size<860?60:size<960?70:size<1060?80:size<1160?90:size<1260?100:size<1360?180:200);
+    final margin2 = EdgeInsets.symmetric(horizontal: size<860?50:size<960?60:size<1060?70:size<1160?80:size<1260?90:size<1360?170:190);
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
+        controller: scrollController,
         padding: EdgeInsets.zero,
         children: [
           //appBar
@@ -33,26 +43,45 @@ class _DesktopHomeState extends State<DesktopHome> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: (){},
-                        child: Text("Home",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17),),
+                        onPressed: () {
+                          setState(() {
+                            scrollController.animateTo(1, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                          });
+                        },
+                        child: Text("Home",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
                       ),
                       TextButton(
-                        onPressed: (){},
-                        child: Text("About Me",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 17),),
+                        onPressed: (){
+                          setState(()  {
+                             scrollController.animateTo(700, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                          });
+                        },
+                        child: Text("About Me",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
                       ),
                       TextButton(
-                        onPressed: (){},
-                        child: Text("Skills",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 17),),
+                        onPressed: (){
+                          setState(() {
+                            scrollController.animateTo(650*2, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                          });
+                        },
+                        child: Text("Skills",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
                       ),
                       TextButton(
-                        onPressed: (){},
-                        child: Text("Portfolio",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 17),),
+                        onPressed: (){
+                          setState(() {
+                            scrollController.animateTo(660*3, duration: Duration(seconds: 1), curve: Curves.easeIn);
+                          });
+                        },
+                        child: Text("Portfolio",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
                       ),
                       TextButton(
-                        onPressed: (){},
-                        child: Text("Contacts",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 18),),
+                        onPressed: (){
+                          setState(() {
+                            scrollController.animateTo(1000*4, duration: Duration(seconds: 1), curve: Curves.easeIn);
+                          });
+                        },
+                        child: Text("Contacts",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontSize: 18,fontFamily: "Font1"),),
                       ),
-
                     ],
                   ),
                   SizedBox(height: 30,),
@@ -184,51 +213,213 @@ class _DesktopHomeState extends State<DesktopHome> {
                 Text("Portfolio",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
                 //p1
                 SizedBox(height: 50,),
-                Padding(
-                  padding: padding,
-                  child: SizedBox(
-                    height: 500,
-                    width: double.infinity,
-                    child: Image.asset("assets/images/p1.png",fit: BoxFit.cover,),
+                SizedBox(
+                  width: double.infinity,
+                  child: MouseRegion(
+                    onExit: (event) {
+                      setState(() {
+                        isMouse1 = false;
+                      });
+                    },
+                    onEnter: (event) {
+                      setState(() {
+                        isMouse1 = true;
+                      });
+                    },
+                    child: AnimatedContainer(
+                      margin:isMouse1?margin2:margin,
+                      height: isMouse1?510:480,
+                      duration: const Duration(milliseconds: 300),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(.3),
+                            spreadRadius: 5,
+                            blurRadius: 15
+                          )
+                        ]
+                      ),
+                      clipBehavior: Clip.hardEdge,
+                      child: Image.asset("assets/images/p1.png",fit: BoxFit.cover,)
+                    ),
                   ),
                 ),
                 SizedBox(height: 40,),
                 TextButton(
-                  onPressed: (){},
+                  onPressed: () async {
+                    Uri url = Uri.parse("https://github.com/hakimbek01/speedometr");
+                    await launchUrl(url);
+                  },
                   child: Text("Speedometr - Homepage",textAlign: TextAlign.center,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: "Font1",color: Colors.black),),
                 ),
                 //p2
                 SizedBox(height: 50,),
-                Padding(
-                  padding: padding,
-                  child: SizedBox(
-                    height: 500,
-                    width: double.infinity,
-                    child: Image.asset("assets/images/p2.png",fit: BoxFit.cover,),
+                SizedBox(
+                  width: double.infinity,
+                  child: MouseRegion(
+                    onExit: (event) {
+                      setState(() {
+                        isMouse2 = false;
+                      });
+                    },
+                    onEnter: (event) {
+                      setState(() {
+                        isMouse2 = true;
+                      });
+                    },
+                    child: AnimatedContainer(
+                        margin:isMouse2?margin2:margin,
+                        height: isMouse2?510:480,
+                        duration: const Duration(milliseconds: 300),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(.3),
+                                  spreadRadius: 5,
+                                  blurRadius: 15
+                              )
+                            ]
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: Image.asset("assets/images/p2.png",fit: BoxFit.cover,)
+                    ),
                   ),
                 ),
                 SizedBox(height: 40,),
                 TextButton(
-                  onPressed: (){},
+                  onPressed: () async {
+                    Uri url = Uri.parse("https://github.com/hakimbek01/qrcodescaner");
+                    await launchUrl(url);
+                  },
                   child: Text("QR-Scan - Homepage",textAlign: TextAlign.center,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: "Font1",color: Colors.black),),
                 ),
                 //p3
                 SizedBox(height: 50,),
-                Padding(
-                  padding: padding,
-                  child: SizedBox(
-                    height: 500,
-                    width: double.infinity,
-                    child: Image.asset("assets/images/p3.png",fit: BoxFit.cover,),
+                SizedBox(
+                  width: double.infinity,
+                  child: MouseRegion(
+                    onExit: (event) {
+                      setState(() {
+                        isMouse3 = false;
+                      });
+                    },
+                    onEnter: (event) {
+                      setState(() {
+                        isMouse3 = true;
+                      });
+                    },
+                    child: AnimatedContainer(
+                        margin:isMouse3?margin2:margin,
+                        height: isMouse3?510:480,
+                        duration: const Duration(milliseconds: 300),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(.3),
+                                  spreadRadius: 5,
+                                  blurRadius: 15
+                              )
+                            ]
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: Image.asset("assets/images/p3.png",fit: BoxFit.cover,)
+                    ),
                   ),
                 ),
                 SizedBox(height: 40,),
                 TextButton(
-                  onPressed: (){},
+                  onPressed: () async {
+                    Uri url = Uri.parse("https://github.com/hakimbek01/zarashopadmin");
+                    await launchUrl(url);
+                  },
                   child: Text("ZaraShop Online Market - Homepage",textAlign: TextAlign.center,style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,fontFamily: "Font1",color: Colors.black),),
                 ),
+                SizedBox(height: 50,)
               ],
             ),
+          ),
+          //contacts
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 100),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 100,),
+                  Text("Contacts",style: TextStyle(fontFamily: "Font1",fontWeight: FontWeight.bold,fontSize: 32),),
+                  SizedBox(height: 30,),
+                  Text("Want to know more or just chat?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
+                  Text("You are welcome",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
+                  SizedBox(height: 30,),
+                  MaterialButton(
+                    onPressed: (){},
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    color: Colors.black,
+                    height: 50,
+                    minWidth: 200,
+                    padding: EdgeInsets.symmetric(horizontal: 25,vertical: 15),
+                    child: Text("Send message",style: TextStyle(color: Colors.white,fontFamily: "Font1",fontSize: 17,fontWeight: FontWeight.bold),),
+                  ),
+                  SizedBox(height: 70,),
+                  SizedBox(
+                    width: 250,
+                    child: Row(
+                      mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            Uri url = Uri.parse("https://www.instagram.com/hakimbekdev/");
+                            launchUrl(url);
+                        },
+                          child: SizedBox(
+                            height: 40,
+                            width: 40,
+                            child: Image.asset('assets/images/linkedlin.png',fit: BoxFit.cover,)
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () async {
+                            Uri url = Uri.parse("https://www.instagram.com/hakimbekdev/");
+                            launchUrl(url);
+                          },
+                          child: SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: Image.asset('assets/images/instagram.png',fit: BoxFit.cover,)
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () async {
+                            Uri url = Uri.parse("https://t.me/hakimbek_flutter");
+                            launchUrl(url);
+                          },
+                          child: SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: Image.asset('assets/images/telegram.png',fit: BoxFit.cover,)
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 40,),
+                  Text("Like me on",style: TextStyle(color: Colors.grey,fontFamily: "Font1"),),
+                  Text("Linkedln, Instagram, Telegram",style: TextStyle(color: Colors.grey,fontFamily: "Font1"),),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 700,
+            width: 700,
+            child: Image.asset("assets/images/avatar.png",width: 700,height: 700,)
           )
         ],
       ),
@@ -272,4 +463,7 @@ class _DesktopHomeState extends State<DesktopHome> {
     );
   }
 
+  void f() async {
+    scrollController.jumpTo(2);
+  }
 }
