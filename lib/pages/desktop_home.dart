@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolioweb/constant.dart';
@@ -106,35 +107,37 @@ class _DesktopHomeState extends State<DesktopHome> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(Texts.firstName,style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                      Text("firstName".tr(),style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
                       SizedBox(height: 10,),
-                      Text(Texts.lastName,style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold,fontFamily: "Font1"),)
+                      Text("lastName".tr(),style: TextStyle(color: Colors.black,fontSize: 35,fontWeight: FontWeight.bold,fontFamily: "Font1"),)
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(Texts.who,style: TextStyle(fontSize: 16,color: Colors.black,fontFamily: "Font1",fontWeight: FontWeight.bold,),),
+                      Text("who".tr(),style: TextStyle(fontSize: 16,color: Colors.black,fontFamily: "Font1",fontWeight: FontWeight.bold,),),
                       SizedBox(height: 10,),
-                      Text(Texts.ageAndArea,style: TextStyle(fontSize: 16,color: Colors.black,fontFamily: "Font1",fontWeight: FontWeight.bold,),)
+                      Text("ageAndArea".tr(),style: TextStyle(fontSize: 16,color: Colors.black,fontFamily: "Font1",fontWeight: FontWeight.bold,),)
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextButton(
-                          onPressed: (){
+                          onPressed: () async {
                             setState(() {
                               language = true;
                             });
+                            await context.setLocale(const Locale("ru", "RU"));
                           },
                           child: Text("RU",style: TextStyle(fontSize: 17,color: language?Colors.black:Colors.grey,fontFamily: "Font1",fontWeight: FontWeight.bold,),)),
                       TextButton(
-                          onPressed: () {
+                          onPressed: () async {
                             setState(() {
                               language = false;
                             });
+                            await context.setLocale(const Locale("en", "US"));
                           },
                           child: Text("ENG",style: TextStyle(fontSize: 17,color: language?Colors.grey:Colors.black,fontFamily: "Font1",fontWeight: FontWeight.bold,),)
                       ),
@@ -165,14 +168,14 @@ class _DesktopHomeState extends State<DesktopHome> {
                 SizedBox(height: 100,),
                 Text("About me",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
                 SizedBox(height: 50,),
-                Text(Texts.about1,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
-                Text(Texts.about2,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                Text("about1".tr(),textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                Text("about2".tr(),textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
                 SizedBox(height: 30,),
-                Text(Texts.about3,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
-                Text(Texts.about4,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                Text("about3".tr(),textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                Text("about4".tr(),textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
                 SizedBox(height: 30,),
-                Text(Texts.about5,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
-                Text(Texts.about6,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                Text("about5".tr(),textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                Text("about6".tr(),textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
               ],
             ),
           ),
@@ -187,7 +190,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                   SizedBox(height: 100,),
                   Text("Skills",style: TextStyle(fontFamily: "Font1",fontWeight: FontWeight.bold,fontSize: 32),),
                   SizedBox(height: 50,),
-                  Text(Texts.skills,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
+                  Text("skills".tr(),style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,fontFamily: "Font1"),),
                   SizedBox(height: 50,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -354,8 +357,8 @@ class _DesktopHomeState extends State<DesktopHome> {
                   SizedBox(height: 100,),
                   Text("Contacts",style: TextStyle(fontFamily: "Font1",fontWeight: FontWeight.bold,fontSize: 32),),
                   SizedBox(height: 30,),
-                  Text("Want to know more or just chat?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
-                  Text("You are welcome",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
+                  Text("contacts1".tr(),style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
+                  Text("contacts2".tr(),style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: "Font1"),),
                   SizedBox(height: 30,),
                   MaterialButton(
                     onPressed: (){},
@@ -364,7 +367,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                     height: 50,
                     minWidth: 200,
                     padding: EdgeInsets.symmetric(horizontal: 25,vertical: 15),
-                    child: Text("Send message",style: TextStyle(color: Colors.white,fontFamily: "Font1",fontSize: 17,fontWeight: FontWeight.bold),),
+                    child: Text("sendButton".tr(),style: TextStyle(color: Colors.white,fontFamily: "Font1",fontSize: 17,fontWeight: FontWeight.bold),),
                   ),
                   SizedBox(height: 70,),
                   SizedBox(
@@ -409,7 +412,7 @@ class _DesktopHomeState extends State<DesktopHome> {
                     ),
                   ),
                   SizedBox(height: 40,),
-                  Text("Like me on",style: TextStyle(color: Colors.grey,fontFamily: "Font1"),),
+                  Text("likeMe".tr(),style: TextStyle(color: Colors.grey,fontFamily: "Font1"),),
                   Text("Linkedln, Instagram, Telegram",style: TextStyle(color: Colors.grey,fontFamily: "Font1"),),
                 ],
               ),
