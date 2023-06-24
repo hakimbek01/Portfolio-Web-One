@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolioweb/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DesktopHome extends StatefulWidget {
@@ -418,11 +417,6 @@ class _DesktopHomeState extends State<DesktopHome> {
               ),
             ),
           ),
-          SizedBox(
-            height: 700,
-            width: 700,
-            child: Image.asset("assets/images/avatar.png",width: 700,height: 700,)
-          )
         ],
       ),
     );
@@ -465,7 +459,4 @@ class _DesktopHomeState extends State<DesktopHome> {
     );
   }
 
-  void f() async {
-    scrollController.jumpTo(2);
-  }
 }
